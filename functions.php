@@ -7,14 +7,9 @@ function getMyResources(){
 	wp_enqueue_style( 'bootstrap-css');
 }
 
-function theme_add_bootstrap() {
-
-}
- 
 add_theme_support( 'post-thumbnails' ); 
 
-add_action('wp_enqueue_scripts' ,'getMyResources', 'theme_add_bootstrap');
-
+add_action('getParents' ,'getChildren');
 //Navigation
 
 register_nav_menus(array('primary' => __('Custom Menu')));
@@ -29,18 +24,15 @@ function get_top_ancestor_id(){
 	return $post->ID;
 }
 
-function getPermalink(){
-	echo "<a href =";
-	get_the_permalink(get_top_ancestor_id());
-	echo ">";
-	echo "</a>";
-	echo "<span class = 'parent-link'>";
+function getParents(){
 	echo "<a href=";
-	get_the_permalink(get_top_ancestor_id());
+	echo get_permalink(get_top_ancestor_id());
 	echo ">" ;
-	get_the_title(get_top_ancestor_id());
+	echo get_the_title(get_top_ancestor_id());
 	echo "</a>";
-	echo "</span>";
+}
+
+function getChildren(){
 	$args = array('child_of' => get_top_ancestor_id(),
 				  'title_li' => "");
 	wp_list_pages($args);
