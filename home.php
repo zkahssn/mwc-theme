@@ -19,11 +19,12 @@ if ( have_posts() ) {
         the_post(); ?>
         <div class = 'pageTitle row'>
         <h2 id ='pageHeading'><?php the_title(); ?></h2>
-        </div>
          <div id = 'pageContent' class = 'pageContent row'> 
+			<?php the_post_thumbnail( 'thumbnail' );  ?>
            <p class = "text-justify">  <?php the_content(); ?> </p>
             </div>
-            </div> 
+			</div> 
+</div>
         <?php }
         }?>
 </div>
