@@ -13,7 +13,20 @@ $args = array('child_of' => get_top_ancestor_id(),
 	          'title_li' => "");
 wp_list_pages($args);
 ?> -->
-BLOGS
+<?php
+if ( have_posts() ) {
+    while ( have_posts() ) {
+        the_post(); ?>
+        <div class = 'pageTitle row'>
+        <h2 id ='pageHeading'><?php the_title(); ?></h2>
+         <div id = 'pageContent' class = 'pageContent row'> 
+			<?php the_post_thumbnail( 'thumbnail' );  ?>
+           <p class = "text-justify">  <?php the_content(); ?> </p>
+            </div>
+			</div> 
+</div>
+        <?php }
+        }?>
 </div>
 <?php
 

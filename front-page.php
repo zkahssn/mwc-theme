@@ -1,8 +1,6 @@
 <?php
 get_header();
-$args = array('child_of' => get_top_ancestor_id(),
-	          'title_li' => "");
-wp_list_pages($args);
+
 ?>
 <div class="jumbotron jumbotron-fluid customjumbo">
 
